@@ -11,7 +11,7 @@ export namespace callable {
     _target: _Address;
   }
   export function BytesWriter(): _BytesWriter {
-    return new _BytesWriter();
+    return new _BytesWriter(1);
   }
   export function encodeSelector(v: string): Selector {
     return _encodeSelector(v);

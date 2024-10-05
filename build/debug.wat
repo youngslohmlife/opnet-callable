@@ -14,6 +14,9 @@
  (type $12 (func (param i32 i32 i32 i32) (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (global $~lib/@btc-vision/btc-runtime/runtime/types/Address/ADDRESS_BYTE_LENGTH i32 (i32.const 66))
+ (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
+ (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
+ (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/state (mut i32) (i32.const 0))
@@ -22,30 +25,19 @@
  (global $~lib/rt/itcms/iter (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/toSpace (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/white (mut i32) (i32.const 0))
- (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
- (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
- (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $~lib/rt/itcms/fromSpace (mut i32) (i32.const 0))
  (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
  (global $~lib/native/ASC_LOW_MEMORY_LIMIT i32 (i32.const 0))
  (global $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistry (mut i32) (i32.const 0))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.U8 i32 (i32.const 0))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.U16 i32 (i32.const 1))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.U32 i32 (i32.const 2))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.U64 i32 (i32.const 3))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.U256 i32 (i32.const 4))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.ADDRESS i32 (i32.const 5))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.STRING i32 (i32.const 6))
- (global $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BufferDataType.BOOLEAN i32 (i32.const 7))
  (global $~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/MAX_EVENT_DATA_SIZE i32 (i32.const 352))
  (global $~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/MAX_EVENTS i32 (i32.const 1000))
  (global $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment.MAX_U16 i32 (i32.const 65535))
- (global $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment.runtimeException i32 (i32.const 592))
+ (global $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment.runtimeException i32 (i32.const 464))
  (global $~lib/@btc-vision/btc-runtime/runtime/env/index/Blockchain (mut i32) (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 736))
- (global $~lib/memory/__data_end i32 (i32.const 832))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33600))
- (global $~lib/memory/__heap_base i32 (i32.const 33600))
+ (global $~lib/rt/__rtti_base i32 (i32.const 656))
+ (global $~lib/memory/__data_end i32 (i32.const 740))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33508))
+ (global $~lib/memory/__heap_base i32 (i32.const 33508))
  (memory $0 1)
  (data $0 (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data $1 (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -56,15 +48,12 @@
  (data $6 (i32.const 320) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $7 (i32.const 348) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $8 (i32.const 412) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $9 (i32.const 444) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $10 (i32.const 476) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $11 (i32.const 508) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $12 (i32.const 540) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $13 (i32.const 572) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00R\00u\00n\00t\00i\00m\00e\00E\00x\00c\00e\00p\00t\00i\00o\00n\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $14 (i32.const 636) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $15 (i32.const 668) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $16 (i32.const 700) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $17 (i32.const 736) "\17\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00\02\01\00\00A\00\00\00\00\00\00\00\02A\00\00\02\t\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00B\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00")
+ (data $9 (i32.const 444) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00R\00u\00n\00t\00i\00m\00e\00E\00x\00c\00e\00p\00t\00i\00o\00n\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $10 (i32.const 508) ",\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00\0e\00\00\00b\00c\001\00d\00e\00a\00d\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $11 (i32.const 556) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $12 (i32.const 588) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $13 (i32.const 620) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data $14 (i32.const 656) "\14\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00\02\01\00\00\02\t\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00A\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "memory" (memory $0))
@@ -2362,51 +2351,6 @@
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>#set:_keys" (param $this i32) (param $_keys i32)
-  local.get $this
-  local.get $_keys
-  i32.store
-  local.get $this
-  local.get $_keys
-  i32.const 0
-  call $~lib/rt/itcms/__link
- )
- (func $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>#set:_values" (param $this i32) (param $_values i32)
-  local.get $this
-  local.get $_values
-  i32.store offset=4
-  local.get $this
-  local.get $_values
-  i32.const 0
-  call $~lib/rt/itcms/__link
- )
- (func $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:selectors (param $this i32) (param $selectors i32)
-  local.get $this
-  local.get $selectors
-  i32.store offset=4
-  local.get $this
-  local.get $selectors
-  i32.const 0
-  call $~lib/rt/itcms/__link
- )
- (func $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:viewSelectors (param $this i32) (param $viewSelectors i32)
-  local.get $this
-  local.get $viewSelectors
-  i32.store offset=8
-  local.get $this
-  local.get $viewSelectors
-  i32.const 0
-  call $~lib/rt/itcms/__link
- )
- (func $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:allowedWriteMethods (param $this i32) (param $allowedWriteMethods i32)
-  local.get $this
-  local.get $allowedWriteMethods
-  i32.store offset=12
-  local.get $this
-  local.get $allowedWriteMethods
-  i32.const 0
-  call $~lib/rt/itcms/__link
- )
  (func $start:~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry
   memory.size
   i32.const 16
@@ -2429,8 +2373,17 @@
   call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#constructor
   global.set $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistry
  )
- (func $start:~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter
+ (func $start:~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment
   call $start:~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry
+ )
+ (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:DEAD_ADDRESS (param $this i32) (param $DEAD_ADDRESS i32)
+  local.get $this
+  local.get $DEAD_ADDRESS
+  i32.store
+  local.get $this
+  local.get $DEAD_ADDRESS
+  i32.const 0
+  call $~lib/rt/itcms/__link
  )
  (func $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<~lib/as-bignum/assembly/integer/u256/u256,~lib/as-bignum/assembly/integer/u256/u256>#set:_keys" (param $this i32) (param $_keys i32)
   local.get $this
@@ -2453,7 +2406,7 @@
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:storage (param $this i32) (param $storage i32)
   local.get $this
   local.get $storage
-  i32.store
+  i32.store offset=4
   local.get $this
   local.get $storage
   i32.const 0
@@ -2462,7 +2415,7 @@
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:events (param $this i32) (param $events i32)
   local.get $this
   local.get $events
-  i32.store offset=4
+  i32.store offset=8
   local.get $this
   local.get $events
   i32.const 0
@@ -2491,7 +2444,7 @@
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:currentBlock (param $this i32) (param $currentBlock i32)
   local.get $this
   local.get $currentBlock
-  i32.store offset=8
+  i32.store offset=12
   local.get $this
   local.get $currentBlock
   i32.const 0
@@ -2500,39 +2453,39 @@
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_selfContract (param $this i32) (param $_selfContract i32)
   local.get $this
   local.get $_selfContract
-  i32.store offset=12
+  i32.store offset=16
   local.get $this
   local.get $_selfContract
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_origin (param $this i32) (param $_origin i32)
+ (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_txOrigin (param $this i32) (param $_txOrigin i32)
   local.get $this
-  local.get $_origin
-  i32.store offset=16
+  local.get $_txOrigin
+  i32.store offset=20
   local.get $this
-  local.get $_origin
+  local.get $_txOrigin
   i32.const 0
   call $~lib/rt/itcms/__link
  )
- (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_sender (param $this i32) (param $_sender i32)
+ (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_msgSender (param $this i32) (param $_msgSender i32)
   local.get $this
-  local.get $_sender
-  i32.store offset=20
+  local.get $_msgSender
+  i32.store offset=24
   local.get $this
-  local.get $_sender
+  local.get $_msgSender
   i32.const 0
   call $~lib/rt/itcms/__link
  )
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_timestamp (param $this i32) (param $_timestamp i64)
   local.get $this
   local.get $_timestamp
-  i64.store offset=24
+  i64.store offset=32
  )
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_contract (param $this i32) (param $_contract i32)
   local.get $this
   local.get $_contract
-  i32.store offset=32
+  i32.store offset=40
   local.get $this
   local.get $_contract
   i32.const 0
@@ -2541,12 +2494,12 @@
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_nextPointer (param $this i32) (param $_nextPointer i32)
   local.get $this
   local.get $_nextPointer
-  i32.store16 offset=36
+  i32.store16 offset=44
  )
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_owner (param $this i32) (param $_owner i32)
   local.get $this
   local.get $_owner
-  i32.store offset=40
+  i32.store offset=48
   local.get $this
   local.get $_owner
   i32.const 0
@@ -2555,19 +2508,19 @@
  (func $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_contractAddress (param $this i32) (param $_contractAddress i32)
   local.get $this
   local.get $_contractAddress
-  i32.store offset=44
+  i32.store offset=52
   local.get $this
   local.get $_contractAddress
   i32.const 0
   call $~lib/rt/itcms/__link
  )
  (func $start:~lib/@btc-vision/btc-runtime/runtime/env/index
+  call $start:~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment
   i32.const 0
   call $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#constructor
   global.set $~lib/@btc-vision/btc-runtime/runtime/env/index/Blockchain
  )
  (func $start:assembly/callable
-  call $start:~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter
   call $start:~lib/@btc-vision/btc-runtime/runtime/env/index
  )
  (func $start:assembly/index
@@ -2588,14 +2541,14 @@
    local.get $0
    call $~lib/rt/itcms/__visit
   end
-  global.get $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistry
+  global.get $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment.runtimeException
   local.tee $1
   if
    local.get $1
    local.get $0
    call $~lib/rt/itcms/__visit
   end
-  global.get $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment.runtimeException
+  global.get $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistry
   local.tee $1
   if
    local.get $1
@@ -2632,30 +2585,6 @@
    local.get $1
    call $~lib/rt/itcms/__visit
   end
-  local.get $0
-  i32.load offset=4
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
-  local.get $0
-  i32.load offset=8
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
-  local.get $0
-  i32.load offset=12
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
  )
  (func $~lib/array/Array<u32>#get:buffer (param $this i32) (result i32)
   local.get $this
@@ -2668,53 +2597,6 @@
   local.get $0
   local.get $1
   call $~lib/array/Array<u32>#__visit
- )
- (func $~lib/typedarray/Uint8Array~visit (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  call $~lib/arraybuffer/ArrayBufferView~visit
- )
- (func $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>~visit" (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  local.get $0
-  local.get $1
-  call $~lib/object/Object~visit
-  local.get $0
-  i32.load
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
-  local.get $0
-  i32.load offset=4
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#get:dataStart (param $this i32) (result i32)
-  local.get $this
-  i32.load offset=4
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length_ (param $this i32) (result i32)
-  local.get $this
-  i32.load offset=12
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#get:buffer (param $this i32) (result i32)
-  local.get $this
-  i32.load
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>~visit (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  call $~lib/object/Object~visit
-  local.get $0
-  local.get $1
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__visit
  )
  (func $~lib/array/Array<i32>#get:buffer (param $this i32) (result i32)
   local.get $this
@@ -2782,7 +2664,7 @@
    call $~lib/rt/itcms/__visit
   end
   local.get $0
-  i32.load offset=32
+  i32.load offset=24
   local.tee $2
   if
    local.get $2
@@ -2798,7 +2680,15 @@
    call $~lib/rt/itcms/__visit
   end
   local.get $0
-  i32.load offset=44
+  i32.load offset=48
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+  local.get $0
+  i32.load offset=52
   local.tee $2
   if
    local.get $2
@@ -2869,6 +2759,19 @@
    local.get $1
    call $~lib/rt/itcms/__visit
   end
+  local.get $0
+  i32.load offset=8
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/typedarray/Uint8Array~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/arraybuffer/ArrayBufferView~visit
  )
  (func $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter~visit (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -2877,14 +2780,6 @@
   call $~lib/object/Object~visit
   local.get $0
   i32.load offset=4
-  local.tee $2
-  if
-   local.get $2
-   local.get $1
-   call $~lib/rt/itcms/__visit
-  end
-  local.get $0
-  i32.load offset=8
   local.tee $2
   if
    local.get $2
@@ -2905,18 +2800,6 @@
    local.get $1
    call $~lib/rt/itcms/__visit
   end
- )
- (func $~lib/array/Array<u8>#get:buffer (param $this i32) (result i32)
-  local.get $this
-  i32.load
- )
- (func $~lib/array/Array<u8>~visit (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  call $~lib/object/Object~visit
-  local.get $0
-  local.get $1
-  call $~lib/array/Array<u8>#__visit
  )
  (func $~lib/array/Array<~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent>#get:dataStart (param $this i32) (result i32)
   local.get $this
@@ -2978,64 +2861,46 @@
      block $~lib/@btc-vision/btc-runtime/runtime/interfaces/IBTC/IBTC
       block $~lib/@btc-vision/btc-runtime/runtime/contracts/OP_NET/OP_NET
        block $~lib/array/Array<~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent>
-        block $~lib/array/Array<u8>
-         block $~lib/dataview/DataView
-          block $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter
+        block $~lib/dataview/DataView
+         block $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter
+          block $~lib/typedarray/Uint8Array
            block $~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent
             block $~lib/array/Array<~lib/as-bignum/assembly/integer/u256/u256>
              block $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<~lib/as-bignum/assembly/integer/u256/u256,~lib/as-bignum/assembly/integer/u256/u256>"
               block $~lib/as-bignum/assembly/integer/u256/u256
                block $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment
                 block $~lib/array/Array<i32>
-                 block $~lib/array/Array<~lib/typedarray/Uint8Array>
-                  block $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>"
-                   block $~lib/typedarray/Uint8Array
-                    block $~lib/array/Array<u32>
-                     block $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase
-                      block $~lib/arraybuffer/ArrayBufferView
-                       block $~lib/string/String
-                        block $~lib/arraybuffer/ArrayBuffer
-                         block $~lib/object/Object
-                          local.get $0
-                          i32.const 8
-                          i32.sub
-                          i32.load
-                          br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase $~lib/array/Array<u32> $~lib/typedarray/Uint8Array $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>" $~lib/array/Array<~lib/typedarray/Uint8Array> $~lib/array/Array<i32> $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment $~lib/as-bignum/assembly/integer/u256/u256 $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<~lib/as-bignum/assembly/integer/u256/u256,~lib/as-bignum/assembly/integer/u256/u256>" $~lib/array/Array<~lib/as-bignum/assembly/integer/u256/u256> $~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter $~lib/dataview/DataView $~lib/array/Array<u8> $~lib/array/Array<~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent> $~lib/@btc-vision/btc-runtime/runtime/contracts/OP_NET/OP_NET $~lib/@btc-vision/btc-runtime/runtime/interfaces/IBTC/IBTC $~lib/@btc-vision/btc-runtime/runtime/storage/StoredBoolean/StoredBoolean $~lib/@btc-vision/btc-runtime/runtime/generic/MapU256/MapU256 $invalid
-                         end
-                         return
-                        end
-                        return
-                       end
-                       return
+                 block $~lib/array/Array<u32>
+                  block $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase
+                   block $~lib/arraybuffer/ArrayBufferView
+                    block $~lib/string/String
+                     block $~lib/arraybuffer/ArrayBuffer
+                      block $~lib/object/Object
+                       local.get $0
+                       i32.const 8
+                       i32.sub
+                       i32.load
+                       br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase $~lib/array/Array<u32> $~lib/array/Array<i32> $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment $~lib/as-bignum/assembly/integer/u256/u256 $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<~lib/as-bignum/assembly/integer/u256/u256,~lib/as-bignum/assembly/integer/u256/u256>" $~lib/array/Array<~lib/as-bignum/assembly/integer/u256/u256> $~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent $~lib/typedarray/Uint8Array $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter $~lib/dataview/DataView $~lib/array/Array<~lib/@btc-vision/btc-runtime/runtime/events/NetEvent/NetEvent> $~lib/@btc-vision/btc-runtime/runtime/contracts/OP_NET/OP_NET $~lib/@btc-vision/btc-runtime/runtime/interfaces/IBTC/IBTC $~lib/@btc-vision/btc-runtime/runtime/storage/StoredBoolean/StoredBoolean $~lib/@btc-vision/btc-runtime/runtime/generic/MapU256/MapU256 $invalid
                       end
-                      local.get $0
-                      local.get $1
-                      call $~lib/arraybuffer/ArrayBufferView~visit
                       return
                      end
-                     local.get $0
-                     local.get $1
-                     call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase~visit
                      return
                     end
-                    local.get $0
-                    local.get $1
-                    call $~lib/array/Array<u32>~visit
                     return
                    end
                    local.get $0
                    local.get $1
-                   call $~lib/typedarray/Uint8Array~visit
+                   call $~lib/arraybuffer/ArrayBufferView~visit
                    return
                   end
                   local.get $0
                   local.get $1
-                  call $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>~visit"
+                  call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase~visit
                   return
                  end
                  local.get $0
                  local.get $1
-                 call $~lib/array/Array<~lib/typedarray/Uint8Array>~visit
+                 call $~lib/array/Array<u32>~visit
                  return
                 end
                 local.get $0
@@ -3067,17 +2932,17 @@
           end
           local.get $0
           local.get $1
-          call $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter~visit
+          call $~lib/typedarray/Uint8Array~visit
           return
          end
          local.get $0
          local.get $1
-         call $~lib/dataview/DataView~visit
+         call $~lib/@btc-vision/btc-runtime/runtime/buffer/BytesWriter/BytesWriter~visit
          return
         end
         local.get $0
         local.get $1
-        call $~lib/array/Array<u8>~visit
+        call $~lib/dataview/DataView~visit
         return
        end
        local.get $0
@@ -3112,101 +2977,18 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 33632
-   i32.const 33680
+   i32.const 33536
+   i32.const 33584
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
    unreachable
   end
  )
- (func $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>#constructor" (param $this i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i64.const 0
-  i64.store
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store offset=8
-  local.get $this
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 8
-   i32.const 7
-   call $~lib/rt/itcms/__new
-   local.tee $this
-   i32.store
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store offset=4
-  local.get $5
-  call $~lib/object/Object#constructor
-  local.tee $this
-  i32.store
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store offset=4
-  local.get $5
-  i32.const 0
-  i32.const 2
-  i32.const 5
-  i32.const 464
-  call $~lib/rt/__newArray
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store offset=8
-  local.get $5
-  call $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>#set:_keys"
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store offset=4
-  local.get $5
-  i32.const 0
-  i32.const 2
-  i32.const 8
-  i32.const 496
-  call $~lib/rt/__newArray
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store offset=8
-  local.get $5
-  call $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>#set:_values"
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $5
- )
  (func $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#constructor (param $this i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.sub
@@ -3222,7 +3004,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 16
+   i32.const 4
    i32.const 4
    call $~lib/rt/itcms/__new
    local.tee $this
@@ -3230,86 +3012,38 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.get $this
-  local.set $7
+  local.set $3
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $3
   i32.store offset=4
-  local.get $7
+  local.get $3
   call $~lib/object/Object#constructor
   local.tee $this
   i32.store
   local.get $this
-  local.set $7
+  local.set $3
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $3
   i32.store offset=4
-  local.get $7
+  local.get $3
   i32.const 0
   i32.const 2
   i32.const 5
   i32.const 432
   call $~lib/rt/__newArray
-  local.set $7
+  local.set $3
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $3
   i32.store offset=8
-  local.get $7
+  local.get $3
   call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:methodMap
   local.get $this
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=4
-  local.get $7
-  i32.const 0
-  call $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<u32,~lib/typedarray/Uint8Array>#constructor"
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=8
-  local.get $7
-  call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:selectors
-  local.get $this
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=4
-  local.get $7
-  i32.const 0
-  i32.const 2
-  i32.const 5
-  i32.const 528
-  call $~lib/rt/__newArray
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=8
-  local.get $7
-  call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:viewSelectors
-  local.get $this
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=4
-  local.get $7
-  i32.const 0
-  i32.const 2
-  i32.const 5
-  i32.const 560
-  call $~lib/rt/__newArray
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store offset=8
-  local.get $7
-  call $~lib/@btc-vision/btc-runtime/runtime/universal/ABIRegistry/ABIRegistryBase#set:allowedWriteMethods
-  local.get $this
-  local.set $7
+  local.set $3
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $3
  )
  (func $"~lib/@btc-vision/btc-runtime/runtime/generic/Map/Map<~lib/as-bignum/assembly/integer/u256/u256,~lib/as-bignum/assembly/integer/u256/u256>#constructor" (param $this i32) (result i32)
   (local $1 i32)
@@ -3333,7 +3067,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 8
-   i32.const 12
+   i32.const 9
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -3356,8 +3090,8 @@
   local.get $5
   i32.const 0
   i32.const 2
-  i32.const 13
-  i32.const 656
+  i32.const 10
+  i32.const 576
   call $~lib/rt/__newArray
   local.set $5
   global.get $~lib/memory/__stack_pointer
@@ -3373,8 +3107,8 @@
   local.get $5
   i32.const 0
   i32.const 2
-  i32.const 13
-  i32.const 688
+  i32.const 10
+  i32.const 608
   call $~lib/rt/__newArray
   local.set $5
   global.get $~lib/memory/__stack_pointer
@@ -3405,7 +3139,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 8
-   i32.const 22
+   i32.const 19
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -3443,7 +3177,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 32
-   i32.const 11
+   i32.const 8
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -3507,12 +3241,35 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 48
-   i32.const 10
+   i32.const 56
+   i32.const 7
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
   end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  call $~lib/object/Object#constructor
+  local.tee $this
+  i32.store
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=4
+  local.get $3
+  i32.const 528
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store offset=8
+  local.get $3
+  call $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:DEAD_ADDRESS
   local.get $this
   local.set $3
   global.get $~lib/memory/__stack_pointer
@@ -3535,8 +3292,8 @@
   local.get $3
   i32.const 0
   i32.const 2
-  i32.const 18
-  i32.const 720
+  i32.const 15
+  i32.const 640
   call $~lib/rt/__newArray
   local.set $3
   global.get $~lib/memory/__stack_pointer
@@ -3580,7 +3337,7 @@
   i32.store offset=4
   local.get $3
   i32.const 0
-  call $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_origin
+  call $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_txOrigin
   local.get $this
   local.set $3
   global.get $~lib/memory/__stack_pointer
@@ -3588,7 +3345,7 @@
   i32.store offset=4
   local.get $3
   i32.const 0
-  call $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_sender
+  call $~lib/@btc-vision/btc-runtime/runtime/env/BTCEnvironment/BlockchainEnvironment#set:_msgSender
   local.get $this
   local.set $3
   global.get $~lib/memory/__stack_pointer
@@ -3656,76 +3413,6 @@
   i32.store
   local.get $2
   call $~lib/array/Array<u32>#get:buffer
-  local.get $cookie
-  call $~lib/rt/itcms/__visit
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/array/Array<~lib/typedarray/Uint8Array>#__visit (param $this i32) (param $cookie i32)
-  (local $cur i32)
-  (local $end i32)
-  (local $val i32)
-  (local $5 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  i32.const 1
-  drop
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store
-  local.get $5
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#get:dataStart
-  local.set $cur
-  local.get $cur
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store
-  local.get $5
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#get:length_
-  i32.const 2
-  i32.shl
-  i32.add
-  local.set $end
-  loop $while-continue|0
-   local.get $cur
-   local.get $end
-   i32.lt_u
-   if
-    local.get $cur
-    i32.load
-    local.set $val
-    local.get $val
-    if
-     local.get $val
-     local.get $cookie
-     call $~lib/rt/itcms/__visit
-    end
-    local.get $cur
-    i32.const 4
-    i32.add
-    local.set $cur
-    br $while-continue|0
-   end
-  end
-  local.get $this
-  local.set $5
-  global.get $~lib/memory/__stack_pointer
-  local.get $5
-  i32.store
-  local.get $5
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#get:buffer
   local.get $cookie
   call $~lib/rt/itcms/__visit
   global.get $~lib/memory/__stack_pointer
@@ -3822,32 +3509,6 @@
   i32.store
   local.get $5
   call $~lib/array/Array<~lib/as-bignum/assembly/integer/u256/u256>#get:buffer
-  local.get $cookie
-  call $~lib/rt/itcms/__visit
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
- )
- (func $~lib/array/Array<u8>#__visit (param $this i32) (param $cookie i32)
-  (local $2 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  i32.const 0
-  drop
-  local.get $this
-  local.set $2
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.store
-  local.get $2
-  call $~lib/array/Array<u8>#get:buffer
   local.get $cookie
   call $~lib/rt/itcms/__visit
   global.get $~lib/memory/__stack_pointer
