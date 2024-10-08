@@ -29,7 +29,7 @@
     "assemblyscript": "$assemblyscript"
   },
   "dependencies": {
-    "@btc-vision/btc-runtime": "^1.1.11",
+    "@btc-vision/btc-runtime": "^1.2.3",
     "as-container": "^0.8.0",
     "as-string-sink": "^0.5.3",
     "as-variant": "^0.4.1",
