@@ -2,17 +2,16 @@
 # yarn lockfile v1
 
 
-"@assemblyscript/loader@^0.27.30":
+"@assemblyscript/loader@^0.27.25":
   version "0.27.30"
   resolved "https://registry.yarnpkg.com/@assemblyscript/loader/-/loader-0.27.30.tgz#5ea2c10b13633b45ac565252418c49c3192e46f1"
   integrity sha512-ZHhTxGKMpTiHZKUTjQnu2z5FwEN2QSjVt5vRmFivCw58VyNVCfOnQNSsDa3J/MujE/SBBpicJo9FCtKUC1hP7A==
 
-"@btc-vision/btc-runtime@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@btc-vision/btc-runtime/-/btc-runtime-1.2.3.tgz#fb5c77b11beea15c12f628368f33ec6f7164645f"
-  integrity sha512-x+J1C7kHBVas6KeUunaNax5k7zp+aVru7eREYVb49IY9fU6ASyRD9QaltWgkSFqqAU3IfxFZrilYc+31Uf26RA==
+"@btc-vision/btc-runtime@https://github.com/slohm-protocol/btc-runtime":
+  version "1.1.9"
+  resolved "https://github.com/slohm-protocol/btc-runtime#940ecf9b1269364269ef3b2ac7ca2712f567a75a"
   dependencies:
-    "@assemblyscript/loader" "^0.27.30"
+    "@assemblyscript/loader" "^0.27.25"
     "@eslint/js" "^9.10.0"
     as-bignum "^0.3.0"
     gulplog "^2.2.0"
@@ -1355,9 +1354,9 @@ typescript-eslint@^8.6.0:
     "@typescript-eslint/utils" "8.8.1"
 
 typescript@^5.5.4, typescript@^5.6.2:
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.2.tgz#d1de67b6bef77c41823f822df8f0b3bcff60a5a0"
-  integrity sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.3.tgz#5f3449e31c9d94febb17de03cc081dd56d81db5b"
+  integrity sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
